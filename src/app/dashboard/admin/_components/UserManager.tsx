@@ -41,9 +41,11 @@ import { Loader2, PencilIcon } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Input } from "@/components/ui/input";
 
 const userRoleSchema = z
   .object({
+    name: z.string().min(1, "Nama tidak boleh kosong"),
     role: z.enum(["ketua_bidang", "atasan", "admin"]),
     bidangId: z.string().optional(),
   })
@@ -99,6 +101,7 @@ export function UserManager() {
   function handleEditClick(user: UserType) {
     setEditingUser(user);
     form.reset({
+      name: user.name || "",
       role: user.role,
       bidangId: user.bidangId,
     });
@@ -110,6 +113,7 @@ export function UserManager() {
     try {
       await updateUserRole({
         userId: editingUser._id,
+        name: values.name,
         role: values.role,
         bidangId: values.bidangId as Id<"bidang"> | undefined,
       });
@@ -130,12 +134,26 @@ export function UserManager() {
     <div className="w-full">
       <h2 className="text-2xl font-bold mb-4">Manajemen Pengguna</h2>
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent>
+        <DialogContent className="max-h-screen overflow-auto">
           <DialogHeader>
             <DialogTitle>Edit Peran: {editingUser?.name}</DialogTitle>
           </DialogHeader>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Nama Pengguna</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Masukkan nama pengguna" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <FormField
                 control={form.control}
                 name="role"
