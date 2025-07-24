@@ -42,7 +42,7 @@ export default function KetuaBidangPage() {
 
             <div className="container mx-auto p-4 md:p-8 space-y-8">
                 <h1 className="text-4xl font-bold">
-                    {me?.role === 'admin' ? "Tinjauan Pegawai (Admin)" : "Dasbor Kepala Bagian"}
+                    {me?.role === 'admin' ? "Tinjauan Pegawai (Admin)" : "Dasbor Kepala Seksi"}
                 </h1>
                 <p className="text-muted-foreground">
                     {me?.role === 'admin'

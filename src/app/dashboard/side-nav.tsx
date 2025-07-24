@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 const links = [
     { name: "Admin", href: "/dashboard/admin", icon: PersonStanding },
     { name: "Users Manager", href: "/dashboard/users", icon: PersonStanding },
-    { name: "Kepala Bagian", href: "/dashboard/leader", icon: HardHat },
+    { name: "Kepala Seksi", href: "/dashboard/leader", icon: HardHat },
     { name: "Atasan", href: "/dashboard/superior", icon: Star },
     { name: "Riwayat Penilaian", href: "/dashboard/riwayat_penilaian", icon: History },
 ];

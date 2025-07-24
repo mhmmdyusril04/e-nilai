@@ -60,7 +60,7 @@ const userRoleSchema = z
       return true;
     },
     {
-      message: "Kepala bagian dan Atasan harus memilih unit kerja",
+      message: "Kepala Seksi dan Atasan harus memilih unit kerja",
       path: ["bidangId"],
     }
   );
@@ -172,7 +172,7 @@ export function UserManager() {
                       <SelectContent>
                         <SelectItem value="atasan">Atasan</SelectItem>
                         <SelectItem value="ketua_bidang">
-                          Kepala Bagian
+                          Kepala Seksi
                         </SelectItem>
                         <SelectItem value="admin">Admin</SelectItem>
                       </SelectContent>

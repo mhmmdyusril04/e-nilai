@@ -25,7 +25,7 @@ const invitationSchema = z.object({
     }
     return true;
 }, {
-    message: "Kepala bagian dan Atasan harus memilih unit kerja",
+    message: "Kepala Seksi dan Atasan harus memilih unit kerja",
     path: ["bidangId"],
 });
 
@@ -83,7 +83,7 @@ export function UserInvitationManager() {
                                     <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
                                     <SelectContent>
                                         <SelectItem value="atasan">Atasan</SelectItem>
-                                        <SelectItem value="ketua_bidang">Kepala bagian</SelectItem>
+                                        <SelectItem value="ketua_bidang">Kepala Seksi</SelectItem>
                                         <SelectItem value="admin">Admin</SelectItem>
                                     </SelectContent>
                                 </Select>

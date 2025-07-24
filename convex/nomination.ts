@@ -13,7 +13,7 @@ export const createNomination = mutation({
 
         const me = await getUser(ctx, identity.tokenIdentifier);
         if (me.role !== 'ketua_bidang' || !me.bidangId) {
-            throw new ConvexError('Hanya Kepala bagian yang dapat membuat nominasi.');
+            throw new ConvexError('Hanya Kepala seksi yang dapat membuat nominasi.');
         }
 
         const pegawai = await ctx.db.get(args.pegawaiId);
