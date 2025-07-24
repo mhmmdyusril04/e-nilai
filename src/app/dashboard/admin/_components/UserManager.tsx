@@ -189,7 +189,7 @@ export function UserManager() {
                   name="bidangId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Bidang</FormLabel>
+                      <FormLabel>Unit Kerja</FormLabel>
                       <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
@@ -236,7 +236,7 @@ export function UserManager() {
             <TableRow>
               <TableHead>Nama</TableHead>
               <TableHead>Role</TableHead>
-              <TableHead>Bidang</TableHead>
+              <TableHead>Unit Kerja</TableHead>
               <TableHead className="text-right">Aksi</TableHead>
             </TableRow>
           </TableHeader>

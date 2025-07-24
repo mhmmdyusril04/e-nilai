@@ -18,7 +18,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const bidangSchema = z.object({
-    name: z.string().min(2, "Nama bidang minimal 2 karakter"),
+    name: z.string().min(2, "Nama unit kerja minimal 2 karakter"),
 });
 
 type BidangType = Doc<"bidang">;

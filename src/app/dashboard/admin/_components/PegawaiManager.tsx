@@ -50,7 +50,7 @@ import { z } from "zod";
 const pegawaiSchema = z.object({
     name: z.string().min(1, "Nama tidak boleh kosong"),
     nip: z.string().min(1, "NIP tidak boleh kosong"),
-    bidangId: z.string().min(1, "Bidang harus dipilih"),
+    bidangId: z.string().min(1, "Seksi harus dipilih"),
 });
 
 type PegawaiType = Doc<"pegawai">;
@@ -199,7 +199,7 @@ export function PegawaiManager() {
                                 name="bidangId"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Bidang</FormLabel>
+                                        <FormLabel>Unit Kerja</FormLabel>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                             <FormControl>
                                                 <SelectTrigger>
