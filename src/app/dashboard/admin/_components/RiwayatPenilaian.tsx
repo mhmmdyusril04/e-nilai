@@ -37,6 +37,9 @@ export function RiwayatPenilaian() {
           </CardHeader>
           <CardContent className="text-sm text-gray-700">
             <p>
+              Unit Kerja: <strong>{item.namaBidang}</strong> 
+            </p>
+            <p>
               Nilai Akhir: <strong>{item.rataRataNilai}</strong> 
             </p>
             <p>

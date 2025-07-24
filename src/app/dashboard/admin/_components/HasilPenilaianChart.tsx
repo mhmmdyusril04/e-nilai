@@ -7,7 +7,7 @@ import { Loader2 } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 export function HasilPenilaianChart() {
-    const hasilPenilaian = useQuery(api.evaluation.getAllEvaluationResults);
+    const hasilPenilaian = useQuery(api.evaluation.getMyEvaluations, {});
 
     if (hasilPenilaian === undefined) {
         return (

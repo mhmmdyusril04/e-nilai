@@ -62,7 +62,8 @@ export const submitAssessment = mutation({
       totalNilai,
       rataRataNilai,
       penilaiId: me._id,
-      tanggal: Date.now(), // timestamp sekarang
+      bidangId: nominasi.bidangId, // ✅ tambahkan ini
+      tanggal: Date.now(),
       selesai: true,
     });
   },
@@ -82,7 +83,15 @@ export const getAllEvaluationResults = query({
       return [];
     }
 
-    const allPenilaian = await ctx.db.query("penilaian").collect();
+    let penilaianQuery = ctx.db.query("penilaian");
+
+    if (me.role === "atasan" && me.bidangId) {
+      penilaianQuery = penilaianQuery.filter((q) =>
+        q.eq(q.field("bidangId"), me.bidangId)
+      );
+    }
+
+    const allPenilaian = await penilaianQuery.collect();
 
     const results = await Promise.all(
       allPenilaian.map(async (penilaian) => {

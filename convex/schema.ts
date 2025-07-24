@@ -38,6 +38,7 @@ export default defineSchema({
     penilaiId: v.id("users"),
     tanggal: v.number(),
     selesai: v.boolean(),
+    bidangId: v.optional(v.id("bidang")),
   })
     .index("by_nominasiId", ["nominasiId"])
     .index("by_penilaiId", ["penilaiId"]),
