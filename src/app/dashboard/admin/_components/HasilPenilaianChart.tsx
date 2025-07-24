@@ -37,24 +37,6 @@ export function HasilPenilaianChart() {
                     <p className="text-center text-gray-500">Belum ada data penilaian untuk ditampilkan.</p>
                 )}
 
-                {chartData.length > 0 && (
-                    <div>
-                        <h3 className="text-lg font-semibold mb-2 text-center">Total Nilai per Pegawai</h3>
-                        <div style={{ width: '100%', height: 350 }}>
-                            <ResponsiveContainer>
-                                <BarChart data={chartData} margin={{ top: 5, right: 20, left: -10, bottom: 60 }}>
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="name" angle={-30} textAnchor="end" interval={0} />
-                                    <YAxis />
-                                    <Tooltip />
-                                    {/* <Legend /> */}
-                                    <Bar dataKey="Total Nilai" fill="#8884d8" />
-                                </BarChart>
-                            </ResponsiveContainer>
-                        </div>
-                    </div>
-                )}
-
                 {chartAverageData.length > 0 && (
                     <div>
                         <h3 className="text-lg font-semibold mb-2 text-center">Rata-rata Nilai per Pegawai</h3>
