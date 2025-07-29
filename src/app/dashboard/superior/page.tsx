@@ -75,7 +75,7 @@ export default function AtasanPage() {
                   <CardContent className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between sm:items-center">
                     <div>
                       {me?.role === "admin" && (
-                        <p className="text-sm text-gray-600">
+                      <p className="text-sm text-gray-600">
                         Unit kerja: {item.namaBidang}
                       </p>
                       )}

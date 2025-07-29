@@ -100,3 +100,25 @@ export const deleteBidang = mutation({
         await ctx.db.delete(args.bidangId);
     },
 });
+
+export const getPegawaiWithBidang = query({
+  args: {},
+  async handler(ctx) {
+    const pegawaiList = await ctx.db.query("pegawai").collect();
+
+    const result = await Promise.all(
+      pegawaiList.map(async (pegawai) => {
+        const bidang = pegawai.bidangId
+          ? await ctx.db.get(pegawai.bidangId)
+          : null;
+
+        return {
+          ...pegawai,
+          namaBidang: bidang?.name ?? "-",
+        };
+      })
+    );
+
+    return result;
+  },
+});

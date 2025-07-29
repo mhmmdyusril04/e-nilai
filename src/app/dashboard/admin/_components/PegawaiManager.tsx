@@ -140,14 +140,14 @@ export function PegawaiManager() {
     return (
         <div className="w-full">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-4">
-                <h2 className="text-2xl font-bold">Manajemen Pegawai</h2>
+                <h2 className="text-2xl font-bold">Manajemen Kepegawaian</h2>
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                     <Select value={selectedBidang} onValueChange={setSelectedBidang}>
                         <SelectTrigger>
                             <SelectValue placeholder="Filter berdasarkan bidang..." />
                         </SelectTrigger>
                         <SelectContent>
-                            <SelectItem value="all">Semua Bidang</SelectItem>
+                            <SelectItem value="all">Semua Seksi</SelectItem>
                             {bidangList?.map((bidang) => (
                                 <SelectItem key={bidang._id} value={bidang._id}>
                                     {bidang.name}

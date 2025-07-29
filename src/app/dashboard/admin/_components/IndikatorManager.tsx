@@ -9,7 +9,6 @@ import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogT
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, usePaginatedQuery } from "convex/react";
@@ -125,9 +124,6 @@ export function IndikatorManager() {
                                     <FormField control={form.control} name="name" render={({ field }) => (
                                         <FormItem><FormLabel>Nama Indikator</FormLabel><FormControl><Input placeholder="cth: Disiplin Kehadiran" {...field} /></FormControl><FormMessage /></FormItem>
                                     )} />
-                                    <FormField control={form.control} name="description" render={({ field }) => (
-                                        <FormItem><FormLabel>Deskripsi (Opsional)</FormLabel><FormControl><Textarea placeholder="Jelaskan secara singkat apa yang dinilai..." {...field} /></FormControl><FormMessage /></FormItem>
-                                    )} />
                                     <DialogFooter className="mt-4">
                                         <DialogClose asChild><Button type="button" variant="secondary">Batal</Button></DialogClose>
                                         <Button type="submit" disabled={form.formState.isSubmitting}>
@@ -141,7 +137,7 @@ export function IndikatorManager() {
 
                     <div className="overflow-x-auto border rounded-md">
                         <Table>
-                            <TableHeader><TableRow><TableHead>Nama Indikator</TableHead><TableHead>Deskripsi</TableHead><TableHead className="text-right">Aksi</TableHead></TableRow></TableHeader>
+                            <TableHeader><TableRow><TableHead>Nama Indikator</TableHead><TableHead className="text-right">Aksi</TableHead></TableRow></TableHeader>
                             <TableBody>
                                 {indikatorList?.length === 0 && (
                                     <TableRow>
@@ -153,7 +149,6 @@ export function IndikatorManager() {
                                 {indikatorList?.map((indikator) => (
                                     <TableRow key={indikator._id}>
                                         <TableCell className="font-medium">{indikator.name}</TableCell>
-                                        <TableCell className="text-sm text-muted-foreground">{indikator.description}</TableCell>
                                         <TableCell className="text-right space-x-2">
                                             <Button variant="outline" size="sm" onClick={() => handleEditClick(indikator)}><PencilIcon className="w-4 h-4" /></Button>
                                             <Button variant="destructive" size="sm" onClick={() => handleDeleteClick(indikator)}><TrashIcon className="w-4 h-4" /></Button>

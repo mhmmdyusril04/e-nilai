@@ -6,6 +6,7 @@ export const createNomination = mutation({
   args: {
     pegawaiId: v.id("pegawai"),
     periode: v.string(),
+    createdBy: v.id("users"), // Tambahkan ini untuk mencatat siapa yang membuat nominasi
   },
   async handler(ctx, args) {
     const identity = await ctx.auth.getUserIdentity();
@@ -31,7 +32,8 @@ export const createNomination = mutation({
       .filter((q) =>
         q.and(
           q.eq(q.field("pegawaiId"), args.pegawaiId),
-          q.eq(q.field("periode"), args.periode)
+          q.eq(q.field("periode"), args.periode),
+          q.eq(q.field("createdBy"), me._id) // <- tambahkan ini
         )
       )
       .first();
@@ -47,6 +49,7 @@ export const createNomination = mutation({
       bidangId: pegawai.bidangId,
       periode: args.periode,
       status: "dinominasikan",
+      createdBy: me._id,
     });
   },
 });
@@ -94,8 +97,8 @@ export const getNominationToBeAssessed = query({
           bidang = await ctx.db.get(pegawai.bidangId);
         }
 
-        console.log('Pegawai:', pegawai);
-        console.log('Bidang:', bidang);
+        console.log("Pegawai:", pegawai);
+        console.log("Bidang:", bidang);
 
         return {
           ...n,
