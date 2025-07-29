@@ -23,7 +23,7 @@ export default defineSchema({
     bidangId: v.id("bidang"),
     periode: v.string(),
     status: v.union(v.literal("dinominasikan"), v.literal("selesai")),
-    createdBy: v.id("users"), // Tambahkan ini untuk mencatat siapa yang membuat nominasi
+    createdBy: v.optional(v.id("users")), // Tambahkan ini untuk mencatat siapa yang membuat nominasi
   }).index("by_pegawaiId", ["pegawaiId"]).index("by_bidang_periode", ["bidangId", "periode"]),
 
   penilaian: defineTable({
