@@ -26,7 +26,6 @@ export const getIndikator = query({
 export const createIndikator = mutation({
     args: {
         name: v.string(),
-        description: v.optional(v.string()),
     },
     async handler(ctx, args) {
         const identity = await ctx.auth.getUserIdentity();

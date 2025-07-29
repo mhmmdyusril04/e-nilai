@@ -19,7 +19,6 @@ import { z } from "zod";
 
 const indikatorSchema = z.object({
     name: z.string().min(3, "Nama indikator minimal 3 karakter"),
-    description: z.string().optional(),
 });
 
 type IndikatorType = Doc<"indikator">;
@@ -47,7 +46,7 @@ export function IndikatorManager() {
 
     const form = useForm<z.infer<typeof indikatorSchema>>({
         resolver: zodResolver(indikatorSchema),
-        defaultValues: { name: "", description: "" },
+        defaultValues: { name: ""},
     });
 
     function handleEditClick(indikator: IndikatorType) {
@@ -58,7 +57,7 @@ export function IndikatorManager() {
 
     function handleAddClick() {
         setEditingIndikator(null);
-        form.reset({ name: "", description: "" });
+        form.reset({ name: ""});
         setIsDialogOpen(true);
     }
 
