@@ -53,7 +53,6 @@ export function IndikatorManager() {
     function handleEditClick(indikator: IndikatorType) {
         setEditingIndikator(indikator);
         form.setValue("name", indikator.name);
-        form.setValue("description", indikator.description ?? "");
         setIsDialogOpen(true);
     }
 

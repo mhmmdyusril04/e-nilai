@@ -54,6 +54,5 @@ export default defineSchema({
 
   indikator: defineTable({
     name: v.string(),
-    description: v.optional(v.string()),
   }),
 });

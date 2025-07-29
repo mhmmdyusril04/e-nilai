@@ -8,7 +8,7 @@ export const getPaginationIndikator = query({
         const identity = await ctx.auth.getUserIdentity();
         if (!identity) throw new ConvexError('Anda harus login.');
 
-        return await ctx.db.query('indikator').order('desc').paginate(args.paginationOpts);
+        return await ctx.db.query('indikator').paginate(args.paginationOpts);
     },
 });
 
@@ -40,7 +40,6 @@ export const createIndikator = mutation({
         }
         await ctx.db.insert('indikator', {
             name: args.name,
-            description: args.description,
         });
     },
 });
@@ -49,7 +48,6 @@ export const updateIndikator = mutation({
     args: {
         indikatorId: v.id('indikator'),
         name: v.string(),
-        description: v.optional(v.string()),
     },
     async handler(ctx, args) {
         const identity = await ctx.auth.getUserIdentity();
@@ -62,7 +60,6 @@ export const updateIndikator = mutation({
 
         await ctx.db.patch(args.indikatorId, {
             name: args.name,
-            description: args.description,
         });
     },
 });
