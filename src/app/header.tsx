@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <div className="relative z-20 px-4 py-3 bg-[url('/background.jpg')] bg-cover bg-no-repeat">
+    <div className="bg-blue-900 relative min-h-[60px] text-white">
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
 
