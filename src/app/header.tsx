@@ -16,7 +16,7 @@ export function Header() {
       <div className="relative container mx-auto flex items-center justify-between px-4 py-4">
         <Link href="/" className="flex gap-2 items-center text-xl text-white font-bold">
           <Image src="/Logo.png" width="50" height="50" alt="file drive logo" />
-          SIDONTAR
+          TEMAN KERJA
         </Link>
 
         <div className="flex gap-2 items-center">
