@@ -28,7 +28,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const nominasiSchema = z.object({
-  kuartal: z.string().min(1, "Pilih kuartal"),
+  kuartal: z.string().min(1, "Pilih semester"),
   tahun: z.string().min(4, "Masukkan tahun yang valid"),
 });
 
@@ -56,7 +56,7 @@ export function NominationDialog({
 
   async function onSubmit(values: z.infer<typeof nominasiSchema>) {
     if (!selectedPegawai) return;
-    const periode = `Kuartal ${values.kuartal} ${values.tahun}`;
+    const periode = `Semester ${values.kuartal} ${values.tahun}`;
     try {
         
       const currentUserId = undefined as unknown as Doc<"users">["_id"]; // Replace with actual user ID
@@ -90,16 +90,16 @@ export function NominationDialog({
                 name="kuartal"
                 render={({ field }) => (
                   <FormItem className="w-1/2">
-                    <FormLabel>Kuartal</FormLabel>
+                    <FormLabel>Semester</FormLabel>
                     <FormControl>
                       <select
                         {...field}
                         className="border px-3 py-2 rounded w-full"
                       >
-                        <option value="1">Kuartal 1</option>
-                        <option value="2">Kuartal 2</option>
-                        <option value="3">Kuartal 3</option>
-                        <option value="4">Kuartal 4</option>
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                        <option value="3">Semester 3</option>
+                        <option value="4">Semester 4</option>
                       </select>
                     </FormControl>
                     <FormMessage />
