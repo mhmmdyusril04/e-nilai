@@ -30,7 +30,7 @@ export function HasilPenilaianChart() {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Diagram Batang Hasil Penilaian</CardTitle>
+                <CardTitle>Diagram Hasil Penilaian Kinerja Pegawai</CardTitle>
             </CardHeader>
             <CardContent className="space-y-8">
                 {chartData.length === 0 && chartAverageData.length === 0 && (

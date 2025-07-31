@@ -87,26 +87,47 @@ export const getAllWorker = query({
 });
 
 export const getMyWorker = query({
-    args: {},
-    async handler(ctx) {
-        const identity = await ctx.auth.getUserIdentity();
-        if (!identity) return [];
+  args: {},
+  async handler(ctx) {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) return [];
 
-        const me = await getUser(ctx, identity.tokenIdentifier);
+    const me = await getUser(ctx, identity.tokenIdentifier);
 
-        if (me.role === 'admin') {
-            return await ctx.db.query('pegawai').collect();
-        }
+    // Admin: ambil semua pegawai
+    if (me.role === "admin") {
+      const allWorkers = await ctx.db.query("pegawai").collect();
 
-        if (me.role !== 'ketua_bidang' || !me.bidangId) {
-            return [];
-        }
+      // Ambil semua bidang yang dibutuhkan untuk enrich data pegawai
+      const bidangIds = [...new Set(allWorkers.map(p => p.bidangId).filter(Boolean))];
+      const bidangDocs = await Promise.all(
+        bidangIds.map(id => ctx.db.get(id))
+      );
+      const bidangMap = new Map(bidangDocs.map(b => [b?._id, b]));
 
-        return await ctx.db
-            .query('pegawai')
-            .withIndex('by_bidangId', (q) => q.eq('bidangId', me.bidangId!))
-            .collect();
-    },
+      return allWorkers.map(p => ({
+        ...p,
+        bidang: bidangMap.get(p.bidangId) ?? null,
+      }));
+    }
+
+    // Non-admin: hanya untuk ketua bidang
+    if (me.role !== "ketua_bidang" || !me.bidangId) {
+      return [];
+    }
+
+    const workers = await ctx.db
+      .query("pegawai")
+      .withIndex("by_bidangId", (q) => q.eq("bidangId", me.bidangId!))
+      .collect();
+
+    const bidang = await ctx.db.get(me.bidangId);
+
+    return workers.map((p) => ({
+      ...p,
+      bidang, // tambahkan nama bidang
+    }));
+  },
 });
 
 export const updateWorker = mutation({

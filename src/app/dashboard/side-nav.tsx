@@ -21,13 +21,13 @@ const links = [
     roles: ["admin"],
   },
   {
-    name: "Kepala Seksi",
+    name: "Pejabat Penilai",
     href: "/dashboard/leader",
     icon: HardHat,
     roles: ["ketua_bidang", "admin"],
   },
   {
-    name: "Atasan",
+    name: "Pejabat Penilai 2",
     href: "/dashboard/superior",
     icon: Star,
     roles: ["atasan", "admin"],
@@ -47,14 +47,14 @@ export function SideNav() {
   if (isLoading) return null;
 
   return (
-    <nav className="grid items-start text-sm font-medium">
+    <nav className="grid items-start text-sm font-medium gap-2">
       {links
         .filter((link) => link.roles.includes(role)) // ⬅️ Filter sesuai role
         .map((link) => (
           <Link key={link.name} href={link.href}>
             <Button
               variant="ghost"
-              className={clsx("w-full justify-start gap-2", {
+              className={clsx("w-full justify-start gap-2 text-white", {
                 "bg-muted text-primary": pathname.startsWith(link.href),
               })}
             >

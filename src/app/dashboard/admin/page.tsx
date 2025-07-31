@@ -34,7 +34,7 @@ export default function AdminPage() {
     <div className="container mx-auto p-4 md:p-8 space-y-8">
       <h1 className="text-4xl font-bold">Admin Dashboard</h1>
 
-      <Button>
+      <Button className="mb-4 hover:bg-blue-950 hover:text-white">
         <Link href={"/dashboard/users"}>Manage Users</Link>
       </Button>
 

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 
 interface PegawaiCardProps {
-  pegawai: Doc<"pegawai">;
+  pegawai: Doc<"pegawai"> & { bidang?: Doc<"bidang"> | null };
   isNominated: boolean;
   isButtonDisabled: boolean;
   onNominate: (pegawai: Doc<"pegawai">) => void;
@@ -29,6 +29,7 @@ export function PegawaiCard({
         <CardTitle>{pegawai.name}</CardTitle>
       </CardHeader>
       <CardContent>
+        <p className="text-sm text-gray-600">Unit Kerja: {pegawai.bidang?.name ?? "Tidak diketahui"}</p>
         <p className="text-sm text-gray-600">NIP: {pegawai.nip}</p>
       </CardContent>
       <CardFooter>

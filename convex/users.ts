@@ -44,12 +44,22 @@ export const getMe = query({
   args: {},
   async handler(ctx) {
     const identity = await ctx.auth.getUserIdentity();
-
     if (!identity) {
       return null;
     }
 
-    return await getUser(ctx, identity.tokenIdentifier);
+    const me = await getUser(ctx, identity.tokenIdentifier);
+
+    // Ambil data bidang jika ada bidangId
+    let bidang = null;
+    if (me.bidangId) {
+      bidang = await ctx.db.get(me.bidangId);
+    }
+
+    return {
+      ...me,
+      bidang, // ← Tambahkan bidang di objek yang dikembalikan
+    };
   },
 });
 

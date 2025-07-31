@@ -15,16 +15,16 @@ export default function DashboardLayout({
 }>) {
     return (
         <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-            <div className="hidden border-r bg-muted/40 md:block">
-                <div className="flex h-full max-h-screen flex-col gap-2 p-4">
+            <div className="border-r md:block bg-blue-950 lg:px-6">
+                <div className="flex h-full max-h-screen flex-col gap-2 p-4 ">
                     <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-                        <h2 className="text-lg font-bold text-primary">Aplikasi Penilaian</h2>
+                        <h2 className="text-lg font-bold text-white">Menu</h2>
                     </div>
                     <SideNav />
                 </div>
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col ">
                 <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 md:hidden">
                     <Sheet>
                         <SheetTitle className="sr-only">Menu</SheetTitle>
@@ -35,7 +35,7 @@ export default function DashboardLayout({
                             </Button>
                         </SheetTrigger>
                         <SheetContent side="left" className="flex flex-col p-4">
-                            <h2 className="text-lg font-bold text-primary mb-4 border-b pb-4">Aplikasi Penilaian</h2>
+                            <h2 className="text-lg font-bold text-primary mb-4 border-b pb-4">Menu</h2>
                             <SideNav />
                         </SheetContent>
                     </Sheet>
