@@ -36,8 +36,7 @@ export default function LandingPage() {
       {showSignIn && <RedirectToSignIn />}
       <div className="relative bg-[url('/background.jpg')] bg-cover bg-center bg-no-repeat min-h-screen text-white">
         <div className="absolute inset-0 bg-black/60 z-0" />
-
-        <div className="relative isolate px-6 pt-14 lg:px-8 z-10">
+        <div className="relative container mx-auto flex flex-col items-center justify-center min-h-screen px-4">
           <div
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
             aria-hidden="true"
@@ -53,11 +52,11 @@ export default function LandingPage() {
           <div className="mx-auto max-w-2xl py-8">
             <div className="text-center text-white">
               <Image
-                src="/logo.png"
+                src="/LOGO.jpg"
                 width="200"
                 height="200"
                 alt="file drive logo"
-                className="inline-block mb-8"
+                className="inline-block mb-8 rounded-2xl shadow-lg"
               />
 
               <h1 className="text-4xl font-bold tracking-tight sm:text-6xl drop-shadow-lg">

@@ -27,7 +27,7 @@ const links = [
     roles: ["ketua_bidang", "admin"],
   },
   {
-    name: "Pejabat Penilai 2",
+    name: "Verifikator",
     href: "/dashboard/superior",
     icon: Star,
     roles: ["atasan", "admin"],
@@ -47,7 +47,7 @@ export function SideNav() {
   if (isLoading) return null;
 
   return (
-    <nav className="grid items-start text-sm font-medium gap-2">
+    <nav className="grid items-start text-sm font-medium gap-2 ">
       {links
         .filter((link) => link.roles.includes(role)) // ⬅️ Filter sesuai role
         .map((link) => (

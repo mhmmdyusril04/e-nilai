@@ -106,11 +106,11 @@ export function IndikatorManager() {
                 </AlertDialogContent>
             </AlertDialog>
 
-            <Card>
+            <Card className="outline">
                 <CardHeader>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                         <CardTitle>Manajemen Indikator</CardTitle>
-                        <Button variant="outline" onClick={handleAddClick}>+ Tambah Indikator</Button>
+                        <Button variant="default" onClick={handleAddClick}>+ Tambah Indikator</Button>
                     </div>
                 </CardHeader>
                 <CardContent>

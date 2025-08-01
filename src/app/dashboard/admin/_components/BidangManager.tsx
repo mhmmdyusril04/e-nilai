@@ -124,13 +124,13 @@ export function BidangManager() {
                 </AlertDialogContent>
             </AlertDialog>
 
-            <Card>
+            <Card className="outline">
                 <CardHeader>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                         <CardTitle>Manajemen Unit Kerja</CardTitle>
                         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                             <DialogTrigger asChild>
-                                <Button variant="outline" onClick={handleAddClick}>+ Tambah Unit Kerja</Button>
+                                <Button variant="default" onClick={handleAddClick}>+ Tambah Unit Kerja</Button>
                             </DialogTrigger>
                             <DialogContent>
                                 <DialogHeader>
