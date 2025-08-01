@@ -32,14 +32,16 @@ export default function DashboardLayout({
         {/* Header (desktop + mobile) */}
         <div className="md:hidden">
           <Sheet>
-            <SheetTitle className="text-lg font-bold">Menu</SheetTitle>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
+              <Button variant="outline" size="icon" className="mx-7 my-3">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="p-4 bg-slate-800 text-white">
-              <SideNav />
+              <SheetTitle className="text-lg font-bold text-white">Menu</SheetTitle>
+              <div className="mt-4">
+                <SideNav />
+              </div>
             </SheetContent>
           </Sheet>
         </div>
