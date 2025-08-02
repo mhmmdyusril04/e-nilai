@@ -42,7 +42,7 @@ export default function AtasanPage() {
   }
 
   const pageTitle =
-    me?.role === "admin" ? "Pantau Nominasi (Admin)" : "Dasbor Atasan";
+    me?.role === "admin" ? "Pantau Nominasi (Admin)" : `Dasbor Atasan ${me?.bidang?.name ?? ""}`;
 
   return (
     <>
