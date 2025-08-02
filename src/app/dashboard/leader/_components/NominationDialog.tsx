@@ -26,6 +26,7 @@ import { useMutation } from "convex/react";
 import { Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useQuery } from "convex/react";
 
 const nominasiSchema = z.object({
   kuartal: z.string().min(1, "Pilih semester"),
@@ -46,6 +47,9 @@ export function NominationDialog({
   const { toast } = useToast();
   const createNominasi = useMutation(api.nomination.createNomination);
 
+  const currentUser = useQuery(api.users.getMe);
+  const currentUserId = currentUser?._id;
+
   const form = useForm<z.infer<typeof nominasiSchema>>({
     resolver: zodResolver(nominasiSchema),
     defaultValues: {
@@ -55,20 +59,26 @@ export function NominationDialog({
   });
 
   async function onSubmit(values: z.infer<typeof nominasiSchema>) {
-    if (!selectedPegawai) return;
-    const periode = `Semester ${values.kuartal} ${values.tahun}`;
-    try {
-        
-      const currentUserId = undefined as unknown as Doc<"users">["_id"]; // Replace with actual user ID
+    if (!selectedPegawai || !currentUserId) {
+      toast.error("Error", {
+        description: "User belum login atau tidak ditemukan di database.",
+      });
+      return;
+    }
 
+    const periode = `Semester ${values.kuartal} ${values.tahun}`;
+
+    try {
       await createNominasi({
         pegawaiId: selectedPegawai._id,
         periode,
-        createdBy: currentUserId, // Use the correct user ID here
+        createdBy: currentUserId, // ✅ Sudah cocok dengan v.id("users")
       });
+
       toast.success("Sukses", {
         description: `${selectedPegawai.name} berhasil dinominasikan.`,
       });
+
       form.reset();
       onOpenChange(false);
     } catch {
