@@ -56,7 +56,7 @@ export default function LandingPage() {
                 width="200"
                 height="200"
                 alt="file drive logo"
-                className="inline-block mb-8 rounded-2xl shadow-lg"
+                className="inline-block mb-8 rounded-full shadow-lg"
               />
 
               <h1 className="text-4xl font-bold tracking-tight sm:text-6xl drop-shadow-lg">
